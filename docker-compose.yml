@@ -1,0 +1,21 @@
+version: '2'
+services:
+    fexco-postcode-mongodb:
+       image: mongo:3.3.12
+       ports:
+            - "27017:27017"    
+    fexco-postcode-redis:
+        image: redis:latest
+        ports:
+            - "6379:6379"
+    fexco-postcode-app:
+        image: pandes/fexco-postcode
+        external_links:
+            - fexco-postcode-mongodb:mongodb
+            - fexco-postcode-redis:redis
+        ports:
+            - 8080:8080
+        hostname: postcode
+        container_name: fexco-postcode
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
