@@ -44,13 +44,13 @@ public class DbAddressService implements AddressLookupService{
 	public List<Address> getAllAddresses(ClientRequest request) {
 		
 		String key = request.getDerivedKey();
-		LOGGER.debug("ClientRequestId::{}, looking for address in db. Key::{}.",request.getRequestId(),key);
+		LOGGER.info("ClientRequestId::{}, looking for address in db. Key::{}.",request.getRequestId(),key);
 		@SuppressWarnings("unchecked")
 		List<Address> addresses = (List<Address>) trdPartyRspRepository.findOne(key);
 		if(Objects.nonNull(addresses)){
 			return addresses;
 		}else{
-			LOGGER.debug("ClientRequestId::{}, Could not find address in cache for given request. Key::{}.",request.getRequestId(),key);
+			LOGGER.info("ClientRequestId::{}, Could not find address in db for given request. Key::{}.",request.getRequestId(),key);
 			return null;
 		}
 	}	

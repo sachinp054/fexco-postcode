@@ -46,7 +46,7 @@ public class RequestProcessorService {
 			return process(clientRequest);
 		}else{
 			Page<Address> addressPage = null;
-			LOGGER.debug("ClientRequestId::{} Saving client request to db.", clientRequest.getRequestId());
+			LOGGER.info("ClientRequestId::{} Saving client request to db.", clientRequest.getRequestId());
 
 			try {
 				List<Address> addresses = processor.process(clientRequest);

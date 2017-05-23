@@ -82,7 +82,7 @@ public class Controller {
 			sb.append(k).append("=").append(v[0]).append(",");
 		});
 		String queryParam = sb.toString().replaceAll(",$", "");
-		LOGGER.debug("Creating ClientRequest based on query params...");
+		LOGGER.info("Creating ClientRequest based on query params...");
 		String clientHost = request.getRemoteAddr();
 		ClientRequest clientRequest = DtoBuilder.buildAndGetClientRequestDto(queryParam, RequestStatus.RECEIVED,
 				"address", "ie", postCode,HOST,clientHost);
@@ -123,10 +123,10 @@ public class Controller {
 			sb.append(k).append("=").append(v[0]).append(",");
 		});
 		String queryParam = sb.toString().replaceAll(",$", "");
-		LOGGER.debug("Creating ClientRequest based on query params...");
+		LOGGER.info("Creating ClientRequest based on query params...");
 		ClientRequest clientRequest = DtoBuilder.buildAndGetClientRequestDto(queryParam, RequestStatus.RECEIVED,
 				"address", "uk", postCode,HOST,clientHost);
-		LOGGER.debug("ClientRequestId::{},  ClientRequest::{}",clientRequest.getRequestId(),clientRequest);
+		LOGGER.info("ClientRequestId::{},  ClientRequest::{}",clientRequest.getRequestId(),clientRequest);
 		LOGGER.info("ClientRequestId::{}, processing request.",clientRequest.getRequestId());
 		return ResponseEntity.ok(requestProcessor.process(clientRequest, pageble).getContent());
 	}

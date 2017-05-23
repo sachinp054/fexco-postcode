@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.Ordered;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.annotation.Order;
@@ -62,12 +61,11 @@ public class ThirdPartyApiAddressService implements AddressLookupService {
 	 * pcode.dto.ClientRequest)
 	 */
 	@Override
-	@Cacheable(key="#{request.derivedKey}", cacheNames="addressCache")
 	public List<Address> getAllAddresses(ClientRequest request) {
-		LOGGER.debug("ClientRequestId::{} finding address using third party api .", request.getRequestId());
+		LOGGER.info("ClientRequestId::{} finding address using third party api .", request.getRequestId());
 		int page = 0;
 		String thirdpartyUri = thirdPartyUriBuilder.getThirPartyUri(request);
-		LOGGER.debug("ClientRequestId::{}. Persisting thirdparty request to db for request :: {}", request.getRequestId(),thirdpartyUri);
+		LOGGER.info("ClientRequestId::{}. Persisting thirdparty request to db for request :: {}", request.getRequestId(),thirdpartyUri);
 		persistThirdPartyRequest(request, thirdpartyUri);
 		List<Address> addresses = new ArrayList<>();
 		RequestStatus thirdPartyRequestStatus = null;
@@ -76,10 +74,10 @@ public class ThirdPartyApiAddressService implements AddressLookupService {
 		try {
 			ResponseEntity<List<Address>> addressResponseEntity = getResponseEntity(thirdpartyUri);
 			if (Objects.nonNull(addressResponseEntity.getBody())) {
-				LOGGER.debug("ClientRequestId::{} found |{}| addresses with thirdparty api", request.getRequestId(),
+				LOGGER.info("ClientRequestId::{} found |{}| addresses with thirdparty api", request.getRequestId(),
 						addressResponseEntity.getBody().size());
 			}else{
-				LOGGER.debug("ClientRequestId::{} . Api call succeded. Could not find any address.", request.getRequestId());
+				LOGGER.info("ClientRequestId::{} . Api call succeded. Could not find any address.", request.getRequestId());
 			
 			}
 			
@@ -92,7 +90,7 @@ public class ThirdPartyApiAddressService implements AddressLookupService {
 				addresses.addAll(addressResponseEntity.getBody());
 			}
 			String key = request.getDerivedKey();
-			LOGGER.debug("ClientRequestId::{}. Persisting address to db and cache. Key{}",request.getRequestId(),key);
+			LOGGER.info("ClientRequestId::{}. Persisting address to db and cache. Key{}",request.getRequestId(),key);
 			persistThirdPartyResponse(request, addresses);
 			thirdPartyRequestStatus = RequestStatus.COMPLETED;
 		} catch (Exception e) {
