@@ -113,12 +113,12 @@ public class AddressBuilder {
 						fields.remove(fields.size()-1);
 					}
 					int size = s.size();
-					for(int l=0;l<=size;l++){
+					for(int l=0;l<size;l++){
 						sb.append(s.pop()).append(",");
 					}
 					sb.setLength(sb.length()-1);
-		
-					values.add(sb.toString());
+					values.set(lines-1, values.get(lines-1)+","+sb.toString());
+					//values.add(sb.toString());
 				}
 			}
 			
