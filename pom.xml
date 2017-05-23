@@ -89,12 +89,12 @@
 			<groupId>com.github.kstyrc</groupId>
 			<artifactId>embedded-redis</artifactId>
 			<version>${embedded.redis.version}</version>
-			<scope>test</scope>
+			<scope>dev</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
-			<scope>test</scope>
+			<scope>dev</scope>
 		</dependency>
 
 	</dependencies>
