@@ -17,3 +17,11 @@ Create Docker image of application with prod profile and install-
 To run the application execute below command in project root directory-
 
 docker-compose up -d (to run in background)
+
+<b>Endpoints </b>
+
+For endpoint documentation, swagger is used. Simply hitting the url machine-ip:8080/swagger-ui.html will take to the home page.
+Using the same interfce we can execute api for multiple eirCode/postCode
+
+1- For fetching address based on eircode - /address/ie/{eirCode}
+1- For fetching address based on postcode - /address/uk/{postcode}
