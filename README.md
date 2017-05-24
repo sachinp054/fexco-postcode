@@ -1,8 +1,8 @@
-fexco-postcode appilaction is for searching addresses in Ireland and UK, based on postcodes. Api is designed and developed as per the task-proposal (task-proposal.md).
+fexco-postcode application is for searching addresses in Ireland and UK, based on postcodes. Api is designed and developed as per the task-proposal (task-proposal.md).
 
 <b>Key points:-</b>
 
-1- Mongodb is being used for persiting searched addresses. 
+1- Mongodb is being used for persisting searched addresses. 
 
 2- Cache is being used for optimizing address search.
 
