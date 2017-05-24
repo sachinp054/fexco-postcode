@@ -6,7 +6,7 @@ fexco-postcode appilaction is for searching addresses in Ireland and UK, based o
 
 2- Cache is being used for optimizing address search.
 
-3- This is assured that for each eircode or postcode third party api will be hit only once. If there comes another request for same eircode/postcode search address will be retrieved from cache or db and parsed as per the quary parameters.
+3- This is assured that for each eircode or postcode third party api will be hit only once. If there comes another request for same eircode/postcode search address will be retrieved from cache or db and parsed as per the query parameters.
 
 <b>Build And Run Application:-</b>
 
