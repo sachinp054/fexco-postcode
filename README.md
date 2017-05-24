@@ -24,4 +24,5 @@ For endpoint documentation, swagger is used. Simply hitting the url machine-ip:8
 Using the same interfce we can execute api for multiple eirCode/postCode
 
 1- For fetching address based on eircode - /address/ie/{eirCode}
-1- For fetching address based on postcode - /address/uk/{postcode}
+
+2- For fetching address based on postcode - /address/uk/{postcode}
